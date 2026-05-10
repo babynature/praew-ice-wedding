@@ -358,6 +358,18 @@ function initMusic() {
   });
 }
 
+function initVideoAutoplay() {
+  var vid = document.querySelector('#video-intro video');
+  if (!vid) return;
+  vid.muted = true;
+  vid.play().catch(function() {
+    document.addEventListener('touchstart', function tryPlay() {
+      vid.play();
+      document.removeEventListener('touchstart', tryPlay);
+    }, { once: true });
+  });
+}
+
 function initScrollReveal() {
   if (!('IntersectionObserver' in window)) return;
   var targets = document.querySelectorAll(
@@ -414,6 +426,7 @@ document.addEventListener('DOMContentLoaded', function() {
   renderGiftBank();
   initNavToggle();
   initMusic();
+  initVideoAutoplay();
   initScrollReveal();
   initBackTop();
   updateCountdown();
