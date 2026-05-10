@@ -80,7 +80,7 @@ section::after {
 
 #envelope-wrap {
   position: relative;
-  width: min(600px, 100vw);
+  width: min(600px, 88vw);
   max-height: 88vh;
   cursor: pointer;
   perspective: 1200px;
